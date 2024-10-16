@@ -22,4 +22,4 @@ async def on_message(message):
     else:
         await message.channel.send(message.content)
 
-client.run("MTI5NjIwNzg2MDg2NjM1NTI0MQ.GOPpCj.5vqCXuSexxfRkz7t4SYiX2o1WtLMadioCSDiG4")
+client.run("Codehere")
