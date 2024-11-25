@@ -2,6 +2,8 @@ import discord
 import asyncio
 from discord.ext import commands
 import youtube_dl
+import os
+import random
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -30,6 +32,37 @@ ffmpeg_options = {
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
 bot = commands.Bot(command_prefix='?', intents=intents)
+
+@bot.command()
+async def mem(ctx):
+    with open('imagenes/meme1.jpeg', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+@bot.command()
+async def mem2(ctx):
+    with open('imagenes/meme2.jpeg', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+@bot.command()
+async def mem3(ctx):
+    with open('imagenes/meme3.jpeg', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+@bot.command()
+async def mem_al(ctx):
+    memes = os.listdir('imagenes')
+    with open(f'imagenes/{random.choice( memes )}', 'rb') as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
 
 @bot.event
 async def on_ready():
@@ -156,7 +189,7 @@ async def on_ready():
 async def main():
     async with bot:
         await bot.add_cog(Music(bot))
-        await bot.start('token here')
+        await bot.start('aqui token')
 
 
 asyncio.run(main())
